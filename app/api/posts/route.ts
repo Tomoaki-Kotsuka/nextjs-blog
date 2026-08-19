@@ -7,7 +7,7 @@ export async function GET() {
     posts.map((post) => ({
       id: post.id,
       title: post.title,
-      category: post.category,
+      tags: post.tags,
     }))
   );
 }

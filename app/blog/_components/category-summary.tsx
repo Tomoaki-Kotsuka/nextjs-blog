@@ -5,7 +5,7 @@ export async function CategorySummary() {
   const counts = new Map<string, number>();
 
   for (const post of posts) {
-    counts.set(post.category, (counts.get(post.category) ?? 0) + 1);
+    counts.set(post.tags[0], (counts.get(post.tags[0]) ?? 0) + 1);
   }
 
   return (

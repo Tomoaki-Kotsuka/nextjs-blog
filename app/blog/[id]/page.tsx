@@ -19,11 +19,10 @@ export async function generateMetadata({
 
   return {
     title: post.title,
-    description: post.content.slice(0, 100),
+    description: post.body.slice(0, 100),
     openGraph: {
       title: post.title,
       type: "article",
-      publishedTime: post.date,
     },
   };
 }
@@ -48,11 +47,9 @@ export default async function PostPage({ params }: PageProps<"/blog/[id]">) {
     <article>
       <Image src={cover} alt="記事のカバー画像" />
       <h2>{post.title}</h2>
-      <p>
-        {post.date} / {post.author} / {post.category}
-      </p>
+      <p>{post.tags.join(" / ")}</p>
       <Collapsible>
-        <p>{post.content}</p>
+        <p>{post.body}</p>
       </Collapsible>
       <LikeButton postId={post.id} />
       <nav>

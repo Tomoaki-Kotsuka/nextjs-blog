@@ -4,14 +4,13 @@ import { cache } from "react";
 export type Post = {
   id: number;
   title: string;
-  content: string;
-  author: string;
-  date: string;
-  category: string;
+  body: string;
+  tags: string[];
+  views: number;
 };
 
 export async function getPosts(): Promise<Post[]> {
-  const res = await fetch("https://api.vercel.app/blog", {
+  const res = await fetch("https://dummyjson.com/posts?limit=25", {
     next: { revalidate: 60, tags: ["posts"] },
   });
 
@@ -19,11 +18,12 @@ export async function getPosts(): Promise<Post[]> {
     throw new Error("記事一覧の取得に失敗しました");
   }
 
-  return res.json();
+  const data = await res.json();
+  return data.posts;
 }
 
 export const getPost = cache(async (id: number): Promise<Post | null> => {
-  const res = await fetch(`https://api.vercel.app/blog/${id}`, {
+  const res = await fetch(`https://dummyjson.com/posts/${id}`, {
     next: { revalidate: 60, tags: ["posts", `post-${id}`] },
   });
 
