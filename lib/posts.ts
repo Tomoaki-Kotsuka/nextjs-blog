@@ -33,7 +33,3 @@ export const getPost = cache(async (id: number): Promise<Post | null> => {
 
   return res.json();
 });
-
-export function preloadPost(id: number) {
-  void getPost(id);
-}
