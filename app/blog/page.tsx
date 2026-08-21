@@ -19,7 +19,7 @@ export default async function BlogPage({ searchParams }: PageProps<"/blog">) {
       <Suspense fallback={<p>検索欄を準備しています...</p>}>
         <SearchBox />
       </Suspense>
-      <h3>カテゴリ別の件数</h3>
+      <h3>タグ別の件数</h3>
       <Suspense fallback={<p>集計しています...</p>}>
         <CategorySummary />
       </Suspense>

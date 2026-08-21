@@ -10,9 +10,9 @@ export async function CategorySummary() {
 
   return (
     <ul>
-      {[...counts].map(([category, count]) => (
-        <li key={category}>
-          {category}: {count} 件
+      {[...counts].map(([tag, count]) => (
+        <li key={tag}>
+          {tag}: {count} 件
         </li>
       ))}
     </ul>
